@@ -1,0 +1,86 @@
+/* ZC Mail Service 文档站：冷色、克制、细线、轻玻璃。不加重视觉噪音。 */
+
+:root {
+  --vp-c-brand-1: #4d7b9d;
+  --vp-c-brand-2: #6c96b6;
+  --vp-c-brand-3: #8db2cd;
+  --vp-c-brand-soft: rgba(77, 123, 157, 0.14);
+  --vp-font-family-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas,
+    'Liberation Mono', monospace;
+}
+
+.dark {
+  --vp-c-brand-1: #8fb6d3;
+  --vp-c-brand-2: #6f9bc0;
+  --vp-c-brand-3: #5580a3;
+  --vp-c-brand-soft: rgba(143, 182, 211, 0.12);
+}
+
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3 {
+  letter-spacing: -0.01em;
+}
+
+.VPHero .name {
+  font-family: var(--vp-font-family-mono);
+  letter-spacing: -0.045em;
+}
+
+.VPHero .text {
+  letter-spacing: 0.02em;
+}
+
+/* 去掉默认圆角与阴影，只留边框 */
+.VPFeature,
+.VPButton,
+.vp-doc .custom-block,
+.VPNavBarTitle {
+  border-radius: 2px;
+}
+
+.VPFeature {
+  border: 1px solid var(--vp-c-divider);
+  background: transparent;
+  box-shadow: none;
+}
+
+.VPFeature:hover {
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+.vp-doc .custom-block {
+  border-left-width: 3px;
+}
+
+/* 导航与侧栏：暗色下压一层玻璃 */
+.dark .VPNavBar {
+  background: rgba(22, 26, 31, 0.72);
+  backdrop-filter: blur(14px);
+}
+
+.dark .VPSidebar {
+  background: rgba(22, 26, 31, 0.55);
+  backdrop-filter: blur(10px);
+}
+
+/* 首页顶部的细网格，淡到几乎看不见 */
+.VPHero {
+  position: relative;
+}
+
+.VPHero::before {
+  content: '';
+  position: absolute;
+  inset: -40px 0 auto 0;
+  height: 320px;
+  background-image:
+    linear-gradient(var(--vp-c-divider) 1px, transparent 1px),
+    linear-gradient(90deg, var(--vp-c-divider) 1px, transparent 1px);
+  background-size: 44px 44px;
+  opacity: 0.18;
+  mask-image: linear-gradient(to bottom, #000, transparent);
+  pointer-events: none;
+  z-index: -1;
+}

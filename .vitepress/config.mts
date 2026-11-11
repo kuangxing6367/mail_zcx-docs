@@ -2,17 +2,17 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'ZC Mail Service',
-  description: '开源自托管的邮件 API 服务 — 零依赖 PHP 实现',
+  description: 'ZC Mail Service 文档。默认同步发信，可选队列。原生 PHP，零运行时依赖。',
   lang: 'zh-CN',
 
-  // 仓库根同时放 README / LICENSE，它们不是站点页面
+  // 仓库根的 README / LICENSE 不是站点页面
   srcExclude: ['README.md', 'LICENSE'],
 
-  // 自定义域名 mail.zgric.top 直接挂在根路径；
+  // 自定义域名 mail.zgric.top 挂在根路径；
   // 若改用 GitHub Pages 默认地址（/mail_zcx-docs/），把这里改成 '/mail_zcx-docs/'
   base: '/',
 
-  // 仓库里的 docs/API.md 对外路由为 /api
+  // 根目录的 API.md 对外路由为 /api
   rewrites: {
     'API.md': 'api.md',
   },
@@ -33,7 +33,7 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '快速开始', link: '/guide' },
-      { text: '宝塔部署', link: '/deploy-baota' },
+      { text: '宝塔', link: '/deploy-baota' },
       { text: '虚拟主机', link: '/deploy-shared-hosting' },
       { text: 'SMTP 入站', link: '/smtp-in' },
       { text: 'API', link: '/api' },
@@ -73,7 +73,18 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/kuangxing6367/mail_zcx' },
     ],
 
-    outline: { level: [2, 3], label: '本页目录' },
+    // 源站是本仓库，不是主仓库的 docs/ 快照
+    editLink: {
+      pattern: 'https://github.com/kuangxing6367/mail_zcx-docs/edit/main/:path',
+      text: '改这一页',
+    },
+
+    footer: {
+      message: '只写代码中已实现的行为。文档与实现冲突时，以实现为准。',
+      copyright: 'WTFPL v2 © zc team',
+    },
+
+    outline: { level: [2, 3], label: '目录' },
     docFooter: { prev: '上一篇', next: '下一篇' },
     darkModeSwitchLabel: '主题',
     returnToTopLabel: '回到顶部',
